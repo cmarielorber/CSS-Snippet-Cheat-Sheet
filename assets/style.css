@@ -1,96 +1,38 @@
-/* create custom CSS variables (also called custom properties) and apply them to the root of the page, making them accessible to all other CSS */
-:root {
-  /* declare a variable with `--` syntax */
-  --dark: #13293d;
-  --light: #fff;
-  --navlink-color: #b9c6ae;
-}
-
-body {
+.row {
   display: flex;
-  flex-direction: column;
-  line-height: 1.3;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-header {
+.column {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1%;
-  /* use CSS var() function to reference a variable created above */
-  background-color: var(--dark);
-  color: var(--light);
+  flex-direction: column
 }
 
-h1 {
-  font-size: 200%;
+.grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(12, 1fr);
 }
 
-h2 {
-  margin: 2% 0;
-  font-size: 250%;
+.linear-gradient-background {
+  background-image: linear-gradient(
+    rgba(232, 102, 236, 0.3) 0%,
+    rgba(232, 102, 236, 0.6) 100%
+  );
 }
 
-a[href*='.css']::after {
-  content: '📝';
-  display: inline-block;
-  margin-left: 3px;
+.code-card .card-header {
+  border-radius: 8px;
+  transition: all 0.5s ease-in-out;
 }
 
-nav ul {
-  display: flex;
-  justify-content: space-between;
-  min-width: 300px;
+.code-card:hover,
+.code-card:hover .card-header {
+  box-shadow: inset 0px 0px 8px rgba(232, 102, 236, 1), 0 0 15px rgba(232, 102, 236, 1);
 }
 
-nav a {
-  background-color: unset;
-  color: var(--navlink-color);
-  font-weight: bold;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: var(--light);
-}
-
-main {
-  display: flex;
-  flex: 1 1 0;
-  max-width: 96%;
-  margin: 2% auto;
-}
-
-article {
-  /* If we were to change the value of `--dark`, then all references to it would change automatically */
-  border-bottom: 1px solid var(--dark);
-}
-
-article p {
-  margin: 2% 0;
-  font-size: 110%;
-}
-
-article ul {
-  margin-left: 5%;
-  font-size: 110%;
-  list-style: circle;
-}
-
-footer {
-  display: flex;
-  justify-content: center;
-  padding: 2%;
-  background-color: var(--dark);
-  color: var(--light);
-}
-
-@media screen and (max-width: 768px) {
-  header {
-    flex-direction: column;
-  }
-
-  main {
-    max-width: 1200px;
-  }
+.card-header {
+  position: relative;
+  margin-top: -20px;
 }
